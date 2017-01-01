@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="favicon.ico" type="x-icon"/> 
 <style>
@@ -27,7 +27,7 @@ div.transbox p {
   padding-top:  2%;
   padding-bottom: 2%;
   margin: 2%;
-  font-color: black;
+  color: black;
   color: #000000;
 }
 
@@ -73,6 +73,7 @@ div.container {
  background-image: url("images/fon1.jpg");
  background-attachment: fixed;
  background-repeat: no-repeat;
+ background-size: cover;
 
 }
 
@@ -133,7 +134,7 @@ div.container {
 <div class="w3-medium">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="http://arrow.scrolltotop.com/arrow13.js"></script>
+  <script type="text/javascript" src="scrolltop.js"></script>
   <noscript><a href="http://www.scrolltotop.com/">Scroll to Top Button</a></noscript>
 
 
@@ -267,6 +268,7 @@ div.container {
     </div></h5>
      <p>Намерете ни на адрес.<br>бул. Приморски парк II 482, 9010 Варна</p>
     <div id="googleMap" class="w3-normal" style="width:100%;height:400px;"></div>
+   
     <br> <p><strong>Резеревирайте</strong> маса, попитайте за "специалитета на деня"" или просто изпратете допълнително съобщение:</p>
     <form action="MAILTO:faninka94@gmail.com" method="post"  enctype="text/plain">
       <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Име" required name="Name"></p>
@@ -307,7 +309,18 @@ div.container {
 </div>
 <!-- Add Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+function myMap() {
+  var myCenter = new google.maps.LatLng(43.215279, 27.954814);
+  var mapCanvas = document.getElementById("googleMap");
+  var mapOptions = {center: myCenter, zoom: 12};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  var marker = new google.maps.Marker({position:myCenter});
+  marker.setMap(map);
+}
+</script>
 
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 <script>
 
 var myIndex = 0;
@@ -326,27 +339,27 @@ function carousel() {
 }
 
 // Google Map Location
-var myCenter = new google.maps.LatLng(43.215279, 27.954814);
+//var myCenter = new google.maps.LatLng(43.215279, 27.954814);
 
-function initialize() {
-  var mapProp = {
-    center: myCenter,
-    zoom: 12,
-    scrollwheel: false,
-    draggable: false,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-
-  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-
-  marker.setMap(map);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
+//function initialize() {
+//  var mapProp = {
+//    center: myCenter,
+//    zoom: 12,
+//    scrollwheel: false,
+//    draggable: false,
+//    mapTypeId: google.maps.MapTypeId.ROADMAP
+//  };
+//
+//  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+//
+//  var marker = new google.maps.Marker({
+//    position: myCenter,
+//  });
+//
+//  marker.setMap(map);
+//}
+//
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 var slideIndex = 1;
 showDivs(slideIndex);
